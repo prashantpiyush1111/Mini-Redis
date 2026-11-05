@@ -6,6 +6,7 @@ import Store.CommandExecutor;
 import Store.DataStore;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 
@@ -30,7 +31,7 @@ public class AofReplayer {
 
         int count = 0;
         int skipped=0;//adding feature to skip replay of commands that do not make sense
-        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file, StandardCharsets.UTF_8))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (line.trim().isEmpty()) continue;
